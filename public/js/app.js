@@ -23,6 +23,7 @@ window.onload = function() {
   let redFlowerCycle;
   let desk;
   let waterLevel;
+  let waterLevelVal = 0;
 
 
   function preload() {
@@ -45,12 +46,12 @@ window.onload = function() {
 
     waterLevel.beginFill(0x2a3547);
     waterLevel.lineStyle(2, 0x2a3547, 1);
-    waterLevel.drawRoundedRect(600, 300, 15, 150, 4);
+    waterLevel.drawRoundedRect(460, 430, 150, 15, 4);
 
     //Water level bar
     waterLevel.beginFill(0x4286f4);
     waterLevel.lineStyle(2, 0x2a3547, 1);
-    waterLevel.drawRoundedRect(600, 300, 15, 140, 4);
+    waterLevel.drawRoundedRect(460, 430, waterLevelVal, 15, 4);
 
 
 
@@ -67,7 +68,19 @@ window.onload = function() {
   }
 
   function listener () {
-    
+    //update water level bar on click
+    waterLevelVal += 10;
+    if (waterLevelVal > 150) waterLevelVal = 0;
+
+    waterLevel.beginFill(0x2a3547);
+    waterLevel.lineStyle(2, 0x2a3547, 1);
+    waterLevel.drawRoundedRect(460, 430, 150, 15, 4);
+
+    waterLevel.beginFill(0x4286f4);
+    waterLevel.lineStyle(2, 0x2a3547, 1);
+    waterLevel.drawRoundedRect(460, 430, waterLevelVal, 15, 4);
+
+    //update flower sprite frame on click
     frame++;
     if (frame >= 17) frame = 0;
 
