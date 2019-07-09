@@ -7,4 +7,4 @@ app.use(express.static('public'));
 const port = process.env.PORT || 8000;
 const server = http.createServer(app);
 server.listen(port);
-
+console.log("Running on localhost:8000");
